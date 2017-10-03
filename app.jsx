@@ -55,7 +55,7 @@ class Model {
 
  const Header = ({model}) => {
   return (
-    <div className="header">
+    <div className = "header">
       <Stats playersVar={model.playersVar} />
       <h1>Scoreboard</h1>
       <Stopwatch />
@@ -70,7 +70,7 @@ function Stats(model) {
   }, 0);
 
   return (
-    <table className="stats">
+    <table className = "stats">
       <tbody>
         <tr>
           <td>Players:</td>
@@ -88,9 +88,9 @@ function Stats(model) {
 
  const Stopwatch = () =>  {
     return (
-      <div className="stopwatch" >
+      <div className = "stopwatch" >
         <h2>Stopwatch</h2>
-        <div className="stopwatch-time"> 0 </div>
+        <div className = "stopwatch-time"> 0 </div>
           <button>Start</button>
         <button>Reset</button>
       </div>
@@ -113,22 +113,22 @@ function Counter(props) {
 }
 */
 
-const Counter = ({ player }) => {
+const Counter = ({player}) => {
   return (
-    <div className='player' key={player.id}>
-      <div className='player-name'>
-        <a className="remove-player">✖</a>
+    <div className = "player" key = {player.id}>
+      <div className = "player-name">
+        <a className = "remove-player">✖</a>
         {player.name}
       </div>
-      <div className='player-score counter'>
-        <button className='counter-action decrement' 
+      <div className = "player-score counter">
+        <button className = "counter-action decrement" 
                 onClick = {() => model.CounterDis(player)} >
           -
         </button>
 
-        <span className='counter-score'>{player.score}</span>
+        <span className = "counter-score">{player.score}</span>
 
-        <button className='counter-action increment' 
+        <button className = "counter-action increment" 
                 onClick = {() => model.CounterMas(player)} >
           +
         </button>
@@ -143,7 +143,7 @@ const PlayerList = ({model}) => {
     <div>
       {
         model.playersVar.map(player => {
-          return <Counter player={player} />
+          return <Counter player = {player} />
         })
       }
     </div>
@@ -152,18 +152,18 @@ const PlayerList = ({model}) => {
 
 const AddPlayerForm = ({model}) => {
   return (
-    <div className='add-player-form'>
-      <form onSubmit={e => {
+    <div className = "add-player-form">
+      <form onSubmit = {e => {
         e.preventDefault();
         model.agregarPlayer(model.addPlayer);
       }}
       >
-        <input type="text"  
+        <input type = "text"  
                onChange = {e => (model.addPlayer = e.target)} 
-               placeholder="Player Name"
+               placeholder = "Player Name"
         />
-        <input type="submit" 
-               value='add player' 
+        <input type = "submit" 
+               value = "add player" 
                
         />
       </form>
@@ -173,10 +173,10 @@ const AddPlayerForm = ({model}) => {
 
 const Scoreboard = ({model}) => {
   return (
-    <div className='scoreboard'>
-      <Header model={model} />
-      <PlayerList model={model} />
-      <AddPlayerForm model={model} />
+    <div className = "scoreboard">
+      <Header model = {model}/>
+      <PlayerList model = {model}/>
+      <AddPlayerForm model = {model}/>
     </div>
   );
 }
@@ -185,8 +185,8 @@ const Scoreboard = ({model}) => {
   let model = new Model();
   let render = () => {
       ReactDOM.render(
-        <Scoreboard title="ScoreBoard" model={model} />,
-         document.getElementById('container')
+        <Scoreboard title = "ScoreBoardd" model={model} />,
+         document.getElementById("container")
      );
    };
 
