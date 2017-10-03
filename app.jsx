@@ -118,13 +118,18 @@ const Counter = ({ player }) => {
     <div className='player' key={player.id}>
       <div className='player-name'>
         <a className="remove-player">✖</a>
-        {player.name}</div>
+        {player.name}
+      </div>
       <div className='player-score counter'>
-        <button className='counter-action decrement' onClick={player.score ? () => model.CounterDis(player) : ''}>
+        <button className='counter-action decrement' 
+                onClick = {() => model.CounterDis(player)} >
           -
         </button>
+
         <span className='counter-score'>{player.score}</span>
-        <button className='counter-action increment' onClick={() => model.CounterMas(player)}>
+
+        <button className='counter-action increment' 
+                onClick = {() => model.CounterMas(player)} >
           +
         </button>
       </div>
@@ -133,7 +138,7 @@ const Counter = ({ player }) => {
 }
 
 
-const PlayerList = ({ model }) => {
+const PlayerList = ({model}) => {
   return (
     <div>
       {
@@ -145,7 +150,7 @@ const PlayerList = ({ model }) => {
   );
 }
 
-const AddPlayerForm = ({ model }) => {
+const AddPlayerForm = ({model}) => {
   return (
     <div className='add-player-form'>
       <form onSubmit={e => {
@@ -166,7 +171,7 @@ const AddPlayerForm = ({ model }) => {
   );
 }
 
-const Scoreboard = ({ model }) => {
+const Scoreboard = ({model}) => {
   return (
     <div className='scoreboard'>
       <Header model={model} />
