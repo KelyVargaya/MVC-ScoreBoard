@@ -1,5 +1,7 @@
 
-const playersVar = [
+class Model {
+  constructor() {
+    this.playersVar = [
     {
       name: "Kely Vargaya",
       score: 50,
@@ -13,10 +15,6 @@ const playersVar = [
       score: 31,
     },
 ];
-
-class Model {
-  constructor(players) {
-    this.players = players;
     this.callback = null;
     this.addPlayer = null;
   }
@@ -30,10 +28,10 @@ class Model {
   }
 
   agregarPlayer(names) {
-    this.players.push({
+    this.playersVar.push({
       name: names.value,
       score: 0,
-      id: this.players.length + 1
+      id: this.playersVar.length + 1
     })
     this.notify();
   }
@@ -49,7 +47,7 @@ class Model {
   }
 
   totalPoints() {
-    return this.players.map(item => item.score).reduce((total, item) => total + item);
+    return this.playersVar.map(item => item.score).reduce((total, item) => total + item);
   }
  
 }
@@ -57,7 +55,7 @@ class Model {
  const Header = ({model}) => {
   return (
     <div className="header">
-      <Stats players={model.players} />
+      <Stats playersVar={model.playersVar} />
       <h1>Scoreboard</h1>
       <Stopwatch />
     </div>
@@ -65,8 +63,8 @@ class Model {
 }
 
 function Stats(model) {
-  const playerCount = model.players.length;
-  const totalPoints = model.players.reduce(function(total, player) {
+  const playerCount = model.playersVar.length;
+  const totalPoints = model.playersVar.reduce(function(total, player) {
     return total + player.score;
   }, 0);
 
@@ -136,7 +134,7 @@ const PlayerList = ({ model }) => {
   return (
     <div>
       {
-        model.players.map(player => {
+        model.playersVar.map(player => {
           return <Counter player={player} />
         })
       }
@@ -176,7 +174,7 @@ const Scoreboard = ({ model }) => {
 }
 
 
-  let model = new Model(playersVar);
+  let model = new Model();
   let render = () => {
       ReactDOM.render(
         <Scoreboard title="ScoreBoard" model={model} />,
