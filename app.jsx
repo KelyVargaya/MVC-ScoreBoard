@@ -34,6 +34,7 @@ class Model {
       id: this.playersVar.length + 1
     })
     this.notify();
+    names.value = '';
   }
 
   CounterDis(player) {
@@ -115,7 +116,9 @@ function Counter(props) {
 const Counter = ({ player }) => {
   return (
     <div className='player' key={player.id}>
-      <div className='player-name'>{player.name}</div>
+      <div className='player-name'>
+        <a className="remove-player">✖</a>
+        {player.name}</div>
       <div className='player-score counter'>
         <button className='counter-action decrement' onClick={player.score ? () => model.CounterDis(player) : ''}>
           -
